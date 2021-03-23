@@ -1,0 +1,123 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  display: inline-block;
+}
+nav a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+
+.box {
+  -webkit-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+
+.warning, .error, .success, .message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  border-color: green;
+}
+
+.error {
+  border: red;
+}
+
+.warning {
+  border-color: yellow;
+}
+
+ul > li {
+  list-style-type: none;
+}
+
+h2 + p {
+  border-top: 1px solid gray;
+}
+
+p ~ span {
+  opacity: 0.8;
+}
+
+.gray {
+  -moz-filter: grayscale(50%);
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+}
+
+.button {
+  border: 1px solid black;
+}
+
+.alert:hover {
+  font-weight: bold;
+}
+[dir=rt] .alert {
+  margin-left: 0;
+  margin-right: 10px;
+}
+:not(.alert) {
+  opacity: 0.8;
+}
+
+.accordion {
+  max-width: 600px;
+  margin: 4rem auto;
+  width: 90%;
+  font-family: "Raleway", sans-serif;
+  background: #f4f4f4;
+}
+.accordion__copy {
+  display: none;
+  padding: 1rem 1.5rem 2rem 1.5rem;
+  color: gray;
+  line-height: 1.6;
+  font-size: 14px;
+  font-weight: 500;
+}
+.accordion__copy--open {
+  display: block;
+}
+
+.sidebar.app-background {
+  background-color: #c6538c;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.wrapper input.field {
+  color: red;
+}
+
+.reset-buttons, .action-buttons {
+  box-sizing: border-box;
+  border-top: 1px rgba(0, 0, 0, 0.12) solid;
+  padding: 16px 0;
+  width: 100%;
+}
+.reset-buttons:hover, .action-buttons:hover {
+  border: 2px rgba(0, 0, 0, 0.5) solid;
+}
+
+.action-buttons {
+  color: #4285f4;
+}
+
+.reset-buttons {
+  color: #cddc39;
+}
+
+/*# sourceMappingURL=hello.css.map */

@@ -1,0 +1,184 @@
+@use "sass:selector";
+
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+.box {
+  @include transform(rotate(30deg));
+}
+
+%message-shared {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+%equeal-heights {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.message {
+  @extend %message-shared;
+}
+
+.success {
+  @extend %message-shared;
+  border-color: green;
+}
+
+.error {
+  @extend %message-shared;
+  border: red;
+}
+
+.warning {
+  @extend %message-shared;
+  border-color: yellow;
+}
+
+ul > {
+  li {
+    list-style-type: none;
+  }
+}
+
+h2 {
+  + p {
+    border-top: 1px solid gray;
+  }
+}
+
+p {
+  ~ {
+    span {
+      opacity: 0.8;
+    }
+  }
+}
+
+@mixin prefix($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
+}
+
+.gray {
+  @include prefix(filter, grayscale(50%), moz webkit);
+}
+
+$rounded-corners: false;
+
+.button {
+  border: 1px solid black;
+  border-radius: if($rounded-corners, 5px, null);
+}
+
+.alert {
+  &:hover {
+    font-weight: bold;
+  }
+
+  [dir="rt"] & {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  :not(&) {
+    opacity: 0.8;
+  }
+}
+
+.accordion {
+  max-width: 600px;
+  margin: 4rem auto;
+  width: 90%;
+  font-family: "Raleway", sans-serif;
+  background: #f4f4f4;
+
+  &__copy {
+    display: none;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    color: gray;
+    line-height: 1.6;
+    font-size: 14px;
+    font-weight: 500;
+
+    &--open {
+      display: block;
+    }
+  }
+}
+
+@mixin app-background($color) {
+  #{if(&,'&.app-background', '.app-background')} {
+    background-color: $color;
+    color: rgba(#fff, 0.75);
+  }
+}
+
+.sidebar {
+  @include app-background(#c6538c);
+}
+
+@mixin unify-parent($child) {
+  @at-root #{selector.unify(&, $child)} {
+    @content;
+  }
+}
+
+.wrapper .field {
+  @include unify-parent("input") {
+    color: red;
+  }
+}
+
+%toolbelt {
+  box-sizing: border-box;
+  border-top: 1px rgba(#000, 0.12) solid;
+  padding: 16px 0;
+  width: 100%;
+  &:hover {
+    border: 2px rgba(#000, 0.5) solid;
+  }
+}
+
+.action-buttons {
+  @extend %toolbelt;
+  color: #4285f4;
+}
+
+.reset-buttons {
+  @extend %toolbelt;
+  color: #cddc39;
+}
